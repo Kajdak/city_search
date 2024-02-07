@@ -1,12 +1,37 @@
-FROM ruby:2.7.0
+FROM ruby:2.7.0-alpine
+ENV BUNDLER_VERSION=2.4.22
 
-RUN apt-get update && \
-    apt-get install -y build-essential libpq-dev nodejs
-RUN gem install nokogiri --platform=ruby
-RUN gem install rails -v 5.0
+RUN apk add --update --no-cache \
+    bash \
+    binutils-gold \
+    build-base \
+    curl \
+    file \
+    g++ \
+    gcc \
+    git \
+    less \
+    libstdc++ \
+    libffi-dev \
+    libc-dev \ 
+    linux-headers \
+    libxml2-dev \
+    libxslt-dev \
+    libgcrypt-dev \
+    make \
+    netcat-openbsd \
+    nodejs \
+    openssl \
+    pkgconfig \
+    postgresql-dev \
+    python \
+    tzdata \
+    yarn 
+RUN gem install bundler -v 2.4.22
 
 WORKDIR /app
 COPY Gemfile Gemfile.lock /app/
+RUN bundle config build.nokogiri --use-system-libraries
 RUN bundle install
 
 COPY . /app
