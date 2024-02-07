@@ -1,0 +1,33 @@
+<div class="container">
+  <h1>Search Results</h1>
+  <% if @cities.any? %>
+    <table class="table">
+      <thead>
+      <tr>
+        <th class="custom-text-center">City</th>
+        <th class="custom-text-center">State</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @cities.each do |city| %>
+      <tr>
+        <td>
+          <%= city.name %>
+        </td>
+        <td>
+          <%= city.state.name %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <hr>
+    <h2>No cities found</h2>
+    <hr>
+  <% end %>
+  
+  <div class="text-center">
+    <%= link_to 'Back to Main Page', root_path, class: 'btn btn-secondary' %>
+  </div>
+</div>

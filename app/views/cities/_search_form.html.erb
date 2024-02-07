@@ -1,0 +1,20 @@
+<div class="container d-flex">
+  <div class="text-center">
+    <h1>City Search</h1>
+    <%= form_tag('/cities/search', method: :get) do %>
+      <div class="input-group">
+        <%=
+            select_tag 'state_id',
+            options_for_select(
+            @states.map { |s| [s.name, s.id] },
+            selected: params[:state_id]
+            ),
+            include_blank: 'Any State',
+            class: 'dropdown'
+        %>
+        <%= text_field_tag :name, params[:name], class: "form-control", placeholder: "City name"%>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    <% end %>
+  </div>
+</div>
