@@ -3,7 +3,7 @@ services:
   db:
     image: postgres:latest
     environment:
-      POSTGRES_USER: github
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
   web:
     build: .
@@ -16,7 +16,7 @@ services:
       - db
   rspec:
     build: .
-    command: bash -c "bundle exec rake db:create db:migrate && bundle exec rspec"
+    command: /bin/sh -c "bundle exec rake db:create db:migrate && bundle exec rspec"
     volumes:
       - .:/app
     depends_on:
