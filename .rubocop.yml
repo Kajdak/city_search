@@ -1,0 +1,28 @@
+require: rubocop-rails
+
+# AllCops settings
+AllCops:
+  TargetRubyVersion: 2.7.0
+
+Rails:
+  Enabled: true
+
+# Rails settings
+Rails/Validation:
+  Enabled: true
+
+Metrics/BlockLength:
+  Enabled: true
+  Max: 35
+
+
+Layout/IndentationConsistency:
+  Enabled: true
+
+# Lint settings
+Lint/UnusedMethodArgument:
+  Enabled: false
+
+# Style settings
+Style/Documentation:
+  Enabled: false
