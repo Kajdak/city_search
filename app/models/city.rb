@@ -7,6 +7,6 @@ class City < ApplicationRecord
 
   default_scope { order(name: :asc) }
 
-  scope :filter_by_state, ->(state_id) { where(state_id: state_id) }
-  scope :filter_by_name, ->(name) { where('name ILIKE ?', "%#{name}%") }
+  scope :filter_by_state, ->(state_id) { where(state_id: state_id) if state_id.present? }
+  scope :filter_by_name, ->(name) { where('name ILIKE ?', "%#{name}%") if name.present? }
 end

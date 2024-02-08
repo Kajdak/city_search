@@ -12,9 +12,7 @@ Rails/Validation:
   Enabled: true
 
 Metrics/BlockLength:
-  Enabled: true
-  Max: 35
-
+  AllowedMethods: ['describe', 'context', 'configure']
 
 Layout/IndentationConsistency:
   Enabled: true
@@ -26,3 +24,6 @@ Lint/UnusedMethodArgument:
 # Style settings
 Style/Documentation:
   Enabled: false
+
+Layout/EndOfLine:
+   Enabled: False

@@ -3,7 +3,7 @@
 class CitiesController < ApplicationController
   before_action :set_city, only: %i[show update destroy]
   before_action :set_states, only: %i[index search]
-  skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy]
+  skip_before_action :verify_authenticity_token, only: %i[create update destroy]
 
   def index; end
 
@@ -34,10 +34,12 @@ class CitiesController < ApplicationController
   end
 
   def search
-    @cities = City.all
-    @cities = @cities.includes(:state).filter_by_state(params[:state_id]) if params[:state_id].present?
-    @cities = @cities.filter_by_name(params[:name]) if params[:name].present?
-    render 'index', cities: @cities
+    @cities = City.includes(:state).filter_by_state(params[:state_id]).filter_by_name(params[:name])
+
+    respond_to do |format|
+      format.html  { render 'index', cities: @cities }
+      format.json  { render json: @cities }
+    end
   end
 
   private
