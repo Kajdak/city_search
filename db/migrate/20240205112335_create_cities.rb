@@ -7,6 +7,6 @@ class CreateCities < ActiveRecord::Migration[5.2]
       t.references :state, null: false, foreign_key: true, type: :uuid
 
       t.timestamps
-    end 
+    end
   end
 end

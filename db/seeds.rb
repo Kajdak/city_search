@@ -11,8 +11,6 @@ pr_cities.each do |city|
   pr.cities.find_or_create_by(city)
 end
 
-
-
 sc_cities = [
   { name: 'Navegantes' },
   { name: 'Itapema' },
@@ -23,8 +21,6 @@ sc = State.find_or_create_by(name: 'Santa Catarina', abbreviation: 'SC')
 sc_cities.each do |city|
   sc.cities.find_or_create_by(city)
 end
-
-
 
 rs_cities = [
   { name: 'Porto Alegre' },

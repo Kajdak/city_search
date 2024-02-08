@@ -15,11 +15,8 @@ RSpec.describe StatesController, type: :controller do
 
       get :index
       parsed_response = JSON.parse(response.body)
-      expect(parsed_response.length).to eq(2)
-      expect(parsed_response[0]['name']).to eq(state1.name)
-      expect(parsed_response[0]['abbreviation']).to eq(state1.abbreviation)
-      expect(parsed_response[1]['name']).to eq(state2.name)
-      expect(parsed_response[1]['abbreviation']).to eq(state2.abbreviation)
+      expect(response).to have_http_status(:success)
+      expect(parsed_response).to include(JSON.parse(state1.to_json), JSON.parse(state2.to_json))
     end
   end
 

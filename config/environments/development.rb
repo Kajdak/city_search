@@ -10,8 +10,9 @@ Rails.application.configure do
     Bullet.rails_logger = true
     Bullet.add_footer = true
     Bullet.skip_html_injection = false
-    Bullet.stacktrace_includes = [ 'your_gem', 'your_middleware' ]
-    Bullet.stacktrace_excludes = [ 'their_gem', 'their_middleware', ['my_file.rb', 'my_method'], ['my_file.rb', 16..20] ]
+    Bullet.stacktrace_includes = %w[your_gem your_middleware]
+    Bullet.stacktrace_excludes = ['their_gem', 'their_middleware', ['my_file.rb', 'my_method'],
+                                  ['my_file.rb', 16..20]]
   end
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
